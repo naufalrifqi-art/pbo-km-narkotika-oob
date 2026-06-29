@@ -1,6 +1,8 @@
 package controller;
 
 import model.*;
+import util.InputHandler;
+
 import java.util.ArrayList;
 
 /**
@@ -18,12 +20,49 @@ public class KnowledgeController {
     /**
      * Tambah putusan baru
      */
-    public boolean tambahPutusan(Putusan putusan) {
+    public boolean tambahPutusan(String[] data) {
         try {
-            repository.simpan(putusan);
+            String nomor = InputHandler.validasiString(data[0]);
+            String pengadilan = InputHandler.validasiString(data[1]);
+            String tanggal = InputHandler.validasiString(data[2]);
+            String nama = InputHandler.validasiString(data[3]);
+            int umur = InputHandler.validasiInt(data[4]);
+            String jenis = InputHandler.validasiString(data[5]);
+            double berat = InputHandler.validasiDouble(data[6]);
+            String pasal = InputHandler.validasiString(data[7]);
+            String peran = InputHandler.validasiString(data[8]);
+            int vonisHukuman = InputHandler.validasiInt(data[9]);
+            double vonisDenda = InputHandler.validasiDouble(data[10]);
+            String hakim = InputHandler.validasiString(data[11]);
+
+            // 2. Validasi Logika Bisnis (Batasan nilai sesuai panduan)
+            if (berat <= 0) {
+                throw new IllegalArgumentException("Berat barang bukti harus lebih dari 0 gram.");
+            }
+            if (umur <= 0) {
+                throw new IllegalArgumentException("Umur terdakwa tidak valid.");
+            }
+            if (vonisHukuman < 0 || vonisDenda < 0) {
+                throw new IllegalArgumentException("Vonis hukuman dan denda tidak boleh negatif.");
+            }
+
+            // 3. Instansiasi Objek Putusan (Controller yang membuat objek, BUKAN Model)
+            // Catatan: Ini akan error dulu sampai Model Engineer membuat constructor parameterized di Putusan.java
+            Putusan putusanBaru = new Putusan(nomor, pengadilan, tanggal, nama, umur, jenis,
+                    berat, pasal, peran, vonisHukuman, vonisDenda, hakim);
+
+            // 4. Simpan ke Repository (Model)
+            repository.simpan(putusanBaru);
             return true;
+
+        } catch (NumberFormatException e) {
+            System.err.println("Error Format: " + e.getMessage());
+            return false;
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error Validasi: " + e.getMessage());
+            return false;
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.err.println("Error Sistem: " + e.getMessage());
             return false;
         }
     }

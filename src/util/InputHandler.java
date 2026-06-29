@@ -9,76 +9,57 @@ public class InputHandler {
     /**
      * Validasi input integer dengan retry
      */
-    public static int validasiInt(String prompt, Scanner sc) {
-        int value = 0;
-        boolean valid = false;
-
-        while (!valid) {
-            try {
-                System.out.print(prompt);
-                value = Integer.parseInt(sc.nextLine());
-                valid = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Input harus berupa angka!");
-            }
+    /**
+     * Validasi input integer
+     * @throws NumberFormatException jika bukan angka
+     * @throws IllegalArgumentException jika kosong
+     */
+    public static int validasiInt(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("Input tidak boleh kosong.");
         }
-        return value;
+        return Integer.parseInt(input.trim());
     }
 
     /**
-     * Validasi input double dengan retry
+     * Validasi input double
+     * @throws NumberFormatException jika bukan angka desimal
+     * @throws IllegalArgumentException jika kosong
      */
-    public static double validasiDouble(String prompt, Scanner sc) {
-        double value = 0;
-        boolean valid = false;
-
-        while (!valid) {
-            try {
-                System.out.print(prompt);
-                value = Double.parseDouble(sc.nextLine());
-                valid = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Input harus berupa angka desimal!");
-            }
+    public static double validasiDouble(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("Input tidak boleh kosong.");
         }
-        return value;
+        return Double.parseDouble(input.trim());
     }
 
     /**
      * Validasi input string (tidak boleh kosong)
+     * @throws IllegalArgumentException jika kosong
      */
-    public static String validasiString(String prompt, Scanner sc) {
-        String value = "";
-        boolean valid = false;
-
-        while (!valid) {
-            System.out.print(prompt);
-            value = sc.nextLine().trim();
-            if (!value.isEmpty()) {
-                valid = true;
-            } else {
-                System.out.println("Error: Input tidak boleh kosong!");
-            }
+    public static String validasiString(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("Input string tidak boleh kosong.");
         }
-        return value;
+        return input.trim();
     }
 
     /**
      * Validasi input pilihan menu (min-max)
      */
-    public static int validasiPilihan(String prompt, int min, int max, Scanner sc) {
-        int pilihan = 0;
-        boolean valid = false;
-
-        while (!valid) {
-            pilihan = validasiInt(prompt, sc);
-            if (pilihan >= min && pilihan <= max) {
-                valid = true;
-            } else {
-                System.out.println("Error: Pilihan harus antara " + min + " - " + max);
-            }
-        }
-        return pilihan;
-    }
+//    public static int validasiPilihan(String prompt, int min, int max, Scanner sc) {
+//        int pilihan = 0;
+//        boolean valid = false;
+//
+//        while (!valid) {
+//            pilihan = validasiInt(prompt, sc);
+//            if (pilihan >= min && pilihan <= max) {
+//                valid = true;
+//            } else {
+//                System.out.println("Error: Pilihan harus antara " + min + " - " + max);
+//            }
+//        }
+//        return pilihan;
+//    }
 
 }
