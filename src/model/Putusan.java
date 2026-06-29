@@ -29,4 +29,19 @@ public class Putusan {
         this.namaHakim = namaHakim;
     }
 
+    public int getVonisHukuman() {
+        return vonisHukuman;
+    }
+
+    public void setVonisHukuman(int vonisHukuman){
+        this.vonisHukuman = vonisHukuman;
+    }
+
+    public double getVonisDenda() {
+        return vonisDenda;
+    }
+
+    public void setVonisDenda(int VonisDenda){
+        this.vonisDenda = vonisDenda;
+    }
 }
