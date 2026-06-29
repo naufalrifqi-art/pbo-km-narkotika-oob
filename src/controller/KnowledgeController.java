@@ -48,8 +48,7 @@ public class KnowledgeController {
 
             // 3. Instansiasi Objek Putusan (Controller yang membuat objek, BUKAN Model)
             // Catatan: Ini akan error dulu sampai Model Engineer membuat constructor parameterized di Putusan.java
-            Putusan putusanBaru = new Putusan(nomor, pengadilan, tanggal, nama, umur, jenis,
-                    berat, pasal, peran, vonisHukuman, vonisDenda, hakim);
+            Putusan putusanBaru = new Putusan(nomor, pengadilan, tanggal, nama, umur, jenis, berat, pasal, peran, vonisHukuman, vonisDenda, hakim);
 
             // 4. Simpan ke Repository (Model)
             repository.simpan(putusanBaru);
