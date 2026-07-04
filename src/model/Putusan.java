@@ -1,6 +1,6 @@
 package model;
 
-public class Putusan extends DukomenPengadilan {
+public class Putusan extends DokumenPengadilan {
     private String namaTerdakwa;
     private int umurTerdakwa;
     private String jenisNarkotika;

@@ -1,5 +1,5 @@
 package model;
 
-public interface Dokumen {
+public interface DokumenHukum {
     String getKategoriHukuman();
 }
