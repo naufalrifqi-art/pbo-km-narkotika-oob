@@ -1,8 +1,8 @@
 package controller;
 
+import java.util.Collections;
 import model.*;
 import util.InputHandler;
-
 import java.util.ArrayList;
 
 /**
@@ -119,5 +119,26 @@ public class KnowledgeController {
      */
     public KnowledgeRepository getRepository() {
         return repository;
+    }
+
+    /**
+     * Fitur Bonus: Mengurutkan daftar putusan
+     * @param kriteria "vonis" untuk hukuman, "denda" untuk denda
+     * @param ascending true untuk terkecil ke terbesar, false sebaliknya
+     */
+    public ArrayList<Putusan> urutkanPutusan(String kriteria, boolean ascending) {
+        // Ambil semua data dari repository
+        ArrayList<Putusan> daftar = repository.getDaftarSemua();
+
+        // Gunakan class PengurutPutusan yang sudah kita buat
+        PengurutPutusan pengurut = new PengurutPutusan(kriteria);
+        Collections.sort(daftar, pengurut);
+
+        // Jika user minta descending (terbesar ke terkecil), balik urutannya
+        if (!ascending) {
+            Collections.reverse(daftar);
+        }
+
+        return daftar;
     }
 }

@@ -2,33 +2,70 @@ package model;
 
 import java.util.ArrayList;
 
-public class KnowledgeRepository {
-    // Skeleton method - akan diisi logika CRUD sebenarnya nanti
+public class KnowledgeRepository{
+    private ArrayList<Putusan>daftarPutusan;
 
-    public void simpan(Putusan putusan) {
+    public KnowledgeRepository(){
+        this.daftarPutusan = new ArrayList<>();
     }
 
-    public Putusan cariByNomor(String nomor) {
+    public void simpan(Putusan putusan){
+        daftarPutusan.add(putusan);
+    }
+
+    public Putusan cariByNomor(String nomor){
+        for(Putusan p:daftarPutusan){
+            if (p.getNomorPerkara().equalsIgnoreCase(nomor)) {
+                return p;
+            }
+        }
         return null;
     }
 
-    public ArrayList<Putusan> cariByNama(String nama) {
-        return new ArrayList<>();
+    public ArrayList<Putusan>cariByNama(String nama){
+        ArrayList<Putusan>hasil = new ArrayList<>();
+        for (Putusan p:daftarPutusan) {
+            if (p.getNamaTerdakwa().toLowerCase().contains(nama.toLowerCase())) {
+                hasil.add(p);
+            }
+        }
+        return hasil;
     }
 
-    public ArrayList<Putusan> filterByJenis(String jenis) {
-        return new ArrayList<>();
+    public ArrayList<Putusan>filterByJenis(String jenis) {
+        ArrayList<Putusan>hasil = new ArrayList<>();
+        for (Putusan p:daftarPutusan) {
+            if (p.getJenisNarkotika().equalsIgnoreCase(jenis)) {
+                hasil.add(p);
+            }
+        }
+        return hasil;
     }
 
-    public ArrayList<Putusan> filterByPengadilan(String pengadilan) {
-        return new ArrayList<>();
+    public ArrayList<Putusan>filterByPengadilan(String pengadilan) {
+        ArrayList<Putusan>hasil=new ArrayList<>();
+        for (Putusan p:daftarPutusan) {
+            if (p.getPengadilan().toLowerCase().contains(pengadilan.toLowerCase())) {
+                hasil.add(p);
+            }
+        }
+        return hasil;
     }
 
-    public boolean hapus(String nomorPerkara) {
+    public boolean hapus(String nomorPerkara){
+        Putusan p=cariByNomor(nomorPerkara);
+        if (p!=null) {
+            daftarPutusan.remove(p);
+            return true;
+        }
         return false;
     }
 
-    public ArrayList<Putusan> getDaftarSemua() {
-        return new ArrayList<>();
+    public ArrayList<Putusan>getDaftarSemua() {
+        return new ArrayList<>(daftarPutusan);
+    }
+
+    public int getTotalData(){
+        return daftarPutusan.size();
     }
 }
