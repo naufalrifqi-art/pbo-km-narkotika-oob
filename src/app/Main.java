@@ -86,7 +86,7 @@ public class Main extends Application {
         ComboBox<String> filterComboBox = new ComboBox<>();
         filterComboBox.setPrefWidth(160.0);
         filterComboBox.setPromptText("Filter Pengadilan");
-        filterComboBox.getItems().addAll("PN Surabaya", "PN Jakarta Selatan", "PN Bandung", "PN Semarang", "PN Medan");
+        filterComboBox.getItems().addAll("PN Surabaya", "PN Lhokseumawe");
 
         Button addButton = new Button("+ Tambah Data");
         addButton.setStyle("-fx-background-color: #10B981; -fx-text-fill: white;");

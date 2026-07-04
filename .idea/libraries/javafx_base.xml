@@ -12,6 +12,10 @@
       <root url="jar://$PROJECT_DIR$/../Downloads/Compressed/Kuliah/javafx-sdk-26.0.1/lib/jdk.jsobject.jar!/" />
       <root url="jar://$PROJECT_DIR$/../Downloads/Compressed/Kuliah/javafx-sdk-26.0.1/lib/jfx.incubator.input.jar!/" />
       <root url="jar://$PROJECT_DIR$/../Downloads/Compressed/Kuliah/javafx-sdk-26.0.1/lib/jfx.incubator.richtext.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/Compressed/Kuliah/javafx-sdk-26.0.1/lib/pdfbox-tools-2.0.29.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/Compressed/Kuliah/javafx-sdk-26.0.1/lib/pdfbox-2.0.29.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/Compressed/Kuliah/javafx-sdk-26.0.1/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Downloads/Compressed/Kuliah/javafx-sdk-26.0.1/lib/fontbox-2.0.29.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
