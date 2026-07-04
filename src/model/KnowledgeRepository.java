@@ -9,13 +9,16 @@ public class KnowledgeRepository{
         this.daftarPutusan = new ArrayList<>();
     }
 
-    public void simpan(Putusan putusan){
-        daftarPutusan.add(putusan);
+    public void simpan(Putusan putusan) {
+        if (putusan != null) {
+            daftarPutusan.add(putusan);
+        }
     }
 
-    public Putusan cariByNomor(String nomor){
-        for(Putusan p:daftarPutusan){
-            if (p.getNomorPerkara().equalsIgnoreCase(nomor)) {
+    public Putusan cariByNomor(String nomor) {
+        if (nomor == null) return null; // Mencegah error
+        for (Putusan p : daftarPutusan) {
+            if (p.getNomorPerkara() != null && p.getNomorPerkara().equalsIgnoreCase(nomor)) {
                 return p;
             }
         }

@@ -6,6 +6,7 @@ import util.InputHandler;
 import java.util.ArrayList;
 
 /**
+ * temanku yang mengerjakan bagian View Engineer. dia membuat GUI lewat fxml.
  * Controller yang menjembatani Model dan View
  * @author [Nama Kamu]
  */
